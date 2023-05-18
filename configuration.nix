@@ -6,7 +6,8 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
+    # TODO find a way to generate hardware configuration?
+    /etc/nixos/hardware-configuration.nix
   ];
 
   boot.loader.systemd-boot.enable = true;

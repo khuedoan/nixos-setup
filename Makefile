@@ -16,4 +16,8 @@ default: build
 
 .PHONY: build
 build: ~/.git
-	sudo nixos-rebuild --flake . switch
+	# TODO find a way to generate hardware configuration and avoid impure
+	sudo nixos-rebuild \
+		--impure \
+		--flake '.#main' \
+		switch
