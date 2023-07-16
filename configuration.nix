@@ -70,8 +70,55 @@
 
   # List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services = {
+    openssh.enable = true;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
+    };
+    kanata = {
+      enable = true;
+      keyboards = {
+        common = {
+          devices = [
+            # TODO autodetect?
+            "/dev/input/by-id/usb-RONGYUAN_2.4G_Wireless_Device-if02-event-kbd"
+          ];
+          config = ''
+            (defalias
+              xcp (tap-hold-press 200 200 esc lctl)
+              fn  (layer-toggle function)
+            )
+
+            (defsrc
+              esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+              tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+              caps a    s    d    f    g    h    j    k    l    ;    '    ret
+              lsft z    x    c    v    b    n    m    ,    .    /    rsft
+              lctl lmet lalt           spc            ralt rctl
+            )
+
+            (deflayer qwerty
+              grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+              tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+              @xcp a    s    d    f    g    h    j    k    l    ;    '    ret
+              lsft z    x    c    v    b    n    m    ,    .    /    rsft
+              lctl lalt lmet           spc            @fn  rctl
+            )
+
+            (deflayer function
+              _    1    2    3    _    _    _    _    _    _    _    _    _    _
+              _    4    5    6    _    _    _    _    _    _    _    _    _    _
+              _    7    8    9    _    _    left down up   rght _    _    _
+              _    _    0    _    _    _    _    _    _    _    _    _
+              _    _    _              _              _    _
+            )
+          '';
+        };
+      };
+    };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
