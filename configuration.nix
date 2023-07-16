@@ -30,18 +30,9 @@
     };
   };
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
-
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     curl
     gcc
@@ -58,7 +49,6 @@
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  # programs.mtr.enable = true;
   programs = {
     zsh.enable = true;
     sway.enable = true;
@@ -77,7 +67,6 @@
   ];
 
   # List services that you want to enable:
-
   services = {
     openssh.enable = true;
     pipewire = {
@@ -128,12 +117,6 @@
     };
   };
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
   virtualisation.docker = {
     enable = true;
   };
@@ -158,13 +141,14 @@
     shell = pkgs.zsh;
     packages = with pkgs; [
       aria
-      aria2
       cargo
+      fd
       firefox
       fzf
       gh
       go
       jq
+      kitty
       kubectl
       kubernetes-helm
       kustomize
@@ -172,10 +156,14 @@
       nodePackages.npm
       nodePackages.yarn
       nodejs
+      obs-studio
       ripgrep
-      zoxide
-      kitty
       wl-clipboard
+      zoxide
+
+      (pass.withExtensions (ext: with ext; [
+        pass-otp
+      ]))
     ];
   };
 }
