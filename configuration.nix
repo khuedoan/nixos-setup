@@ -20,17 +20,15 @@
   time.timeZone = "Asia/Ho_Chi_Minh";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-  # Configure keymap in X11
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = {
-  #   "eurosign:e";
-  #   "caps:escape" # map caps to escape.
-  # };
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    inputMethod = {
+      enabled = "ibus";
+      ibus.engines = with pkgs.ibus-engines; [
+        bamboo # Vietnamese
+      ];
+    };
+  };
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -54,18 +52,29 @@
     tree
     unzip
     watch
+    python3
     zsh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  programs.zsh.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
+  programs = {
+    zsh.enable = true;
+    sway.enable = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
   };
 
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+      ];
+    })
+  ];
 
   # List services that you want to enable:
 
@@ -165,6 +174,8 @@
       nodejs
       ripgrep
       zoxide
+      kitty
+      wl-clipboard
     ];
   };
 }
