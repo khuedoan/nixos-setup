@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
@@ -77,9 +73,8 @@
     kanata = {
       enable = true;
       keyboards = {
-        common = {
+        maxfit67 = {
           devices = [
-            # TODO autodetect?
             "/dev/input/by-id/usb-RONGYUAN_2.4G_Wireless_Device-if02-event-kbd"
           ];
           config = ''
@@ -96,19 +91,19 @@
               lctl lmet lalt           spc            ralt rctl
             )
 
-            (deflayer qwerty
-              grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-              tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-              @xcp a    s    d    f    g    h    j    k    l    ;    '    ret
-              lsft z    x    c    v    b    n    m    ,    .    /    rsft
-              lctl lalt lmet           spc            @fn  rctl
+            (deflayer default
+              grv  _    _    _    _    _    _    _    _    _    _    _    _    _
+              _    _    _    _    _    _    _    _    _    _    _    _    _    _
+              @xcp _    _    _    _    _    _    _    _    _    _    _    _
+              _    _    _    _    _    _    _    _    _    _    _    _
+              _    lalt lmet           _              @fn  _
             )
 
             (deflayer function
-              _    1    2    3    _    _    _    _    _    _    _    _    _    _
-              _    4    5    6    _    _    _    _    _    _    _    _    _    _
-              _    7    8    9    _    _    left down up   rght _    _    _
-              _    _    0    _    _    _    _    _    _    _    _    _
+              _    _    _    _    _    _    _    _    _    _    _    _    _    _
+              _    _    _    _    _    _    _    _    _    _    _    _    _    _
+              _    _    _    _    _    _    left down up   rght _    _    _
+              _    _    _    _    _    _    _    _    _    _    _    _
               _    _    _              _              _    _
             )
           '';
