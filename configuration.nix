@@ -9,6 +9,19 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # TODO make it optional for non-AMD GPU
+  hardware.opengl = {
+    driSupport = true;
+    driSupport32Bit = true;
+    # TODO do we need this?? currently disabled because FPS lock in Overwatch
+    # extraPackages = with pkgs; [
+    #   amdvlk
+    # ];
+    # extraPackages32 = with pkgs; [
+    #   driversi686Linux.amdvlk
+    # ];
+  };
+
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
@@ -159,6 +172,10 @@
       (pass.withExtensions (ext: with ext; [
         pass-otp
       ]))
+
+      # TODO split to a different file?
+      # Games
+      bottles
     ];
   };
 }
