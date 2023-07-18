@@ -66,13 +66,18 @@
     sway = {
       enable = true;
       extraPackages = with pkgs; [
+        feh
+        grim
         i3status-rust
         mako
         pavucontrol
+        pcmanfm
+        slurp
         swayidle
         swaylock
         wl-clipboard
         wofi
+        xdg-utils
         zathura
       ];
     };
