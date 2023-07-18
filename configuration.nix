@@ -48,23 +48,35 @@
     git
     gnumake
     neovim
+    python3
     tmux
     tree
     unzip
     watch
-    python3
-    zsh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs = {
     zsh.enable = true;
-    sway.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
     };
+    sway = {
+      enable = true;
+      extraPackages = with pkgs; [
+        i3status-rust
+        mako
+        pavucontrol
+        swayidle
+        swaylock
+        wl-clipboard
+        wofi
+        zathura
+      ];
+    };
+    light.enable = true;
   };
 
   fonts.fonts = with pkgs; [
@@ -135,7 +147,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.11"; # Did you read the comment?
+  system.stateVersion = "23.05"; # Did you read the comment?
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.khuedoan = {
@@ -144,11 +156,13 @@
     extraGroups = [
       "docker"
       "networkmanager"
+      "video"
       "wheel"
     ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       aria
+      audacity
       cargo
       fd
       firefox
@@ -166,7 +180,6 @@
       nodejs
       obs-studio
       ripgrep
-      wl-clipboard
       zoxide
 
       (pass.withExtensions (ext: with ext; [
