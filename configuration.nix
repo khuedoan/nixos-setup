@@ -104,7 +104,7 @@
           ];
           config = ''
             (defalias
-              xcp (tap-hold-press 200 200 esc lctl)
+              xcp (tap-hold-press 10 200 esc lctl)
               fn  (layer-toggle function)
             )
 
