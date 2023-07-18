@@ -14,8 +14,15 @@ default: build
 		&& git pull origin master \
 		&& git remote set-url origin git@github.com:khuedoan/dotfiles
 
+# TODO clean this up
+~/Pictures/Wallpapers/LostInMindNord.jpg:
+	curl \
+		https://user-images.githubusercontent.com/27996771/129466074-64c92948-96b0-4673-be33-75ee26b82a6c.jpg \
+		--output ${@} \
+		--create-dirs
+
 .PHONY: build
-build: ~/.git
+build: ~/.git ~/Pictures/Wallpapers/LostInMindNord.jpg
 	# TODO find a way to generate hardware configuration and avoid impure
 	sudo nixos-rebuild \
 		--impure \
