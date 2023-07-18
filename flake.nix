@@ -20,5 +20,25 @@
         ./home/khuedoan.nix
       ];
     };
+    # TODO clean up tests
+    nixosConfigurations.test = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      modules = [
+        ./configuration.nix
+        {
+           users.extraUsers.vm = {
+             group = "wheel";
+             isNormalUser = true;
+             password = "testvm";
+           };
+           security.sudo = {
+             enable = true;
+             wheelNeedsPassword = false;
+           };
+        }
+        home-manager.nixosModules.home-manager
+        ./home/khuedoan.nix
+      ];
+    };
   };
 }

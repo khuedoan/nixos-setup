@@ -21,3 +21,11 @@ build: ~/.git
 		--impure \
 		--flake '.#main' \
 		switch
+
+.PHONY: test
+test:
+	nixos-rebuild \
+		--impure \
+		--flake '.#test' \
+		build-vm
+	./result/bin/run-nixos-vm
