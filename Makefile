@@ -33,6 +33,10 @@ build: ~/.git ~/Pictures/Wallpapers/LostInMindNord.jpg
 test:
 	nixos-rebuild \
 		--impure \
-		--flake '.#test' \
+		--flake '.#testvm' \
 		build-vm
 	./result/bin/run-nixos-vm
+
+.PHONY: update
+update:
+	nix flake update
