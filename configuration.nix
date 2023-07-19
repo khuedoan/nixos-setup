@@ -111,6 +111,11 @@
             (defalias
               xcp (tap-hold-press 10 200 esc lctl)
               fn  (layer-toggle function)
+
+              mau (movemouse-accel-up    5 800 1 30)
+              mal (movemouse-accel-left  5 800 1 30)
+              mad (movemouse-accel-down  5 800 1 30)
+              mar (movemouse-accel-right 5 800 1 30)
             )
 
             (defsrc
@@ -131,10 +136,10 @@
 
             (deflayer function
               _    _    _    _    _    _    _    _    _    _    _    _    _    _
-              _    _    _    _    _    _    _    _    _    _    _    _    _    _
-              _    _    _    _    _    _    left down up   rght _    _    _
-              _    _    _    _    _    _    _    _    _    _    _    _
-              _    _    _              _              _    _
+              _    _    mmid @mau _    _    _    _    _    _    _    _    _    _
+              _    mlft @mal @mad @mar mrgt left down up   rght _    _    _
+              _    _    _    _    _    _    _    mlft mmid mrgt _    _
+              _    _    _              @fn            _    _
             )
           '';
         };
