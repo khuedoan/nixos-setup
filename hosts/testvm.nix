@@ -13,4 +13,5 @@
   users.users.khuedoan = {
     password = "testvm";
   };
+  services.getty.autologinUser = "khuedoan";
 }
