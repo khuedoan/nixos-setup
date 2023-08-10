@@ -66,6 +66,7 @@
         grim
         i3status-rust
         mako
+        mpv
         pavucontrol
         pcmanfm
         slurp
@@ -153,6 +154,7 @@
       };
     };
     blueman.enable = true;
+    tailscale.enable = true;
   };
 
   virtualisation.docker = {
@@ -182,6 +184,7 @@
       aria
       audacity
       cargo
+      chromium
       fd
       firefox
       fzf
@@ -198,6 +201,7 @@
       nodejs
       obs-studio
       ripgrep
+      rust-analyzer # override the one installed by mason.nvim
       zoxide
 
       (pass.withExtensions (ext: with ext; [
@@ -207,6 +211,7 @@
       # TODO split to a different file?
       # Games
       bottles
+      steam
     ];
   };
 }
