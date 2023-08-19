@@ -73,7 +73,7 @@
         swayidle
         swaylock
         wl-clipboard
-        wofi
+        rofi-wayland
         xdg-utils
         zathura
       ];
@@ -186,7 +186,7 @@
       cargo
       chromium
       fd
-      firefox
+      firefox-wayland
       fzf
       gh
       go
