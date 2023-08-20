@@ -122,6 +122,7 @@
             };
           };
           startup = [
+            { command = "autotiling"; always = true; }
             { command = "systemctl --user start easyeffects"; }
             { command = "ibus-daemon -drx"; }
             { command = "firefox"; }

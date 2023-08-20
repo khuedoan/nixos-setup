@@ -62,6 +62,7 @@
     sway = {
       enable = true;
       extraPackages = with pkgs; [
+        autotiling
         feh
         grim
         i3status-rust
@@ -69,11 +70,11 @@
         mpv
         pavucontrol
         pcmanfm
+        rofi-wayland
         slurp
         swayidle
         swaylock
         wl-clipboard
-        rofi-wayland
         xdg-utils
         zathura
       ];
