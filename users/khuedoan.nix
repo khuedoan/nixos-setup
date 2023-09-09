@@ -8,9 +8,13 @@
         easyeffects.enable = true;
         swayidle = {
           enable = true;
-          # timeout 10 'swaylock -f' \
-          # timeout 11 'swaymsg "output * power off"' \
-          # resume 'swaymsg "output * power on"
+          events = [
+            { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -f"; }
+          ];
+          timeouts = [
+            { timeout = 600; command = "${pkgs.swaylock}/bin/swaylock -f"; }
+            { timeout = 660; command = "${pkgs.sway}/bin/swaymsg \"output * power off\""; resumeCommand = "${pkgs.sway}/bin/swaymsg \"output * power on\""; }
+          ];
         };
       };
       wayland.windowManager.sway = {
