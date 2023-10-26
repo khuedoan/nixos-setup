@@ -17,18 +17,19 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
+          ./hosts/ryzentower.nix
           home-manager.nixosModules.home-manager
-          ./users/khuedoan.nix
+          ./users/personal.nix
         ];
       };
-      # TODO clean up tests
+
       testvm = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
           ./hosts/testvm.nix
           home-manager.nixosModules.home-manager
-          ./users/khuedoan.nix
+          ./users/personal.nix
         ];
       };
     };

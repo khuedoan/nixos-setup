@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   home-manager = {
     useGlobalPkgs = true;
@@ -21,7 +23,7 @@
         enable = true;
         config = rec {
           modifier = "Mod4";
-          terminal = "kitty";
+          terminal = "foot";
           menu = "rofi -show drun -show-icons";
           left = "h";
           down = "j";
@@ -29,6 +31,7 @@
           right = "l";
           bars = [
             {
+              position = "top";
               fonts = {
                 size = 10.0;
               };
@@ -44,7 +47,7 @@
           gaps = {
             smartBorders = "on";
             smartGaps = true;
-            inner = 15;
+            inner = 10;
           };
           input = {
             "type:pointer" = {
@@ -77,10 +80,6 @@
             "${modifier}+f" = "fullscreen toggle";
             "${modifier}+a" = "focus parent";
 
-            "${modifier}+s" = "layout stacking";
-            "${modifier}+w" = "layout tabbed";
-            "${modifier}+e" = "layout toggle split";
-
             "${modifier}+Shift+f" = "floating toggle";
 
             "${modifier}+1" = "workspace number 1";
@@ -103,18 +102,24 @@
             "${modifier}+Shift+8" = "move container to workspace number 8";
             "${modifier}+Shift+9" = "move container to workspace number 9";
 
-            "${modifier}+Shift+minus" = "move scratchpad";
-            "${modifier}+minus" = "scratchpad show";
+            "${modifier}+0" = "scratchpad show";
+            "${modifier}+Shift+0" = "move scratchpad";
 
-            "${modifier}+Shift+c" = "reload";
-            "${modifier}+Shift+e" = "exec [ \"$(echo -n 'yes\\nno' | rofi -dmenu)\" = \"yes\" ] && swaymsg exit";
             "${modifier}+r" = "mode resize";
 
             # TODO clean up
             "${modifier}+ctrl+l" = "exec swaylock";
+            "${modifier}+ctrl+e" = "exec [ \"$(echo -n 'yes\\nno' | rofi -dmenu)\" = \"yes\" ] && swaymsg exit";
+            "${modifier}+ctrl+r" = "reload";
             "XF86AudioRaiseVolume" = "exec wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+";
             "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
             "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+
+            "Print" = "exec grim - | wl-copy";
+            "ctrl+Print" = "exec grim -g \"\$(slurp)\" - | wl-copy";
+
+            "${modifier}+Shift+p" = "exec MENU='rofi -dmenu -p OTP -i' otp";
+
             "ctrl+Shift+Space" = "exec ibus-next";
           };
           output = {
@@ -129,12 +134,10 @@
             { command = "autotiling"; always = true; }
             { command = "systemctl --user start easyeffects"; }
             { command = "ibus-daemon -drx"; }
-            { command = "firefox"; }
           ];
           window = {
             titlebar = false;
           };
-          workspaceAutoBackAndForth = true;
         };
         wrapperFeatures = {
           gtk = true;
