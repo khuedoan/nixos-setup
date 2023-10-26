@@ -1,5 +1,7 @@
 .POSIX:
 
+config = main
+
 .PHONY: default
 default: build
 
@@ -26,7 +28,7 @@ build: ~/.git ~/Pictures/Wallpapers/LostInMindNord.jpg
 	# TODO find a way to generate hardware configuration and avoid impure
 	sudo nixos-rebuild \
 		--impure \
-		--flake '.#main' \
+		--flake '.#${config}' \
 		switch
 
 .PHONY: test
