@@ -173,7 +173,7 @@
         swaylock = {
           enable = true;
           settings = {
-            color = "#282c34";
+            color = "#000000";
             indicator-idle-visible = true;
             show-failed-attempts = true;
           };

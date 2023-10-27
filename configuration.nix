@@ -13,23 +13,30 @@
     bluetooth.enable = true;
   };
 
-  networking.networkmanager.enable = true;
+  networking = {
+    networkmanager.enable = true;
+  };
 
-  # Set your time zone.
   time.timeZone = "Asia/Ho_Chi_Minh";
 
-  # Select internationalisation properties.
   i18n = {
     defaultLocale = "en_US.UTF-8";
     inputMethod = {
       enabled = "ibus";
       ibus.engines = with pkgs.ibus-engines; [
-        bamboo # Vietnamese
+        bamboo
       ];
     };
   };
 
   nixpkgs.config.allowUnfree = true;
+
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+  };
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
@@ -45,8 +52,6 @@
     watch
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
   programs = {
     zsh.enable = true;
     gnupg.agent = {
@@ -74,6 +79,7 @@
       ];
     };
     light.enable = true;
+    dconf.enable = true;
   };
 
   fonts.fonts = with pkgs; [
@@ -84,6 +90,14 @@
     })
   ];
 
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
+
   # List services that you want to enable:
   services = {
     openssh.enable = true;
@@ -92,8 +106,13 @@
       alsa.enable = true;
       pulse.enable = true;
     };
+    dbus.enable = true;
     blueman.enable = true;
     tailscale.enable = true;
+  };
+
+  security = {
+    polkit.enable = true;
   };
 
   virtualisation.docker = {
@@ -124,6 +143,7 @@
       audacity
       cargo
       chromium
+      direnv
       fd
       firefox-wayland
       foot
