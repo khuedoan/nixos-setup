@@ -53,7 +53,14 @@
   ];
 
   programs = {
-    zsh.enable = true;
+    zsh = {
+      enable = true;
+      loginShellInit = ''
+        if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
+          exec sway
+        fi
+      '';
+    };
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
