@@ -87,6 +87,10 @@
     };
     light.enable = true;
     dconf.enable = true;
+    direnv = {
+      enable = true;
+      silent = true;
+    };
   };
 
   fonts.fonts = with pkgs; [
@@ -149,7 +153,6 @@
       audacity
       cargo
       chromium
-      direnv
       fd
       firefox-wayland
       foot
