@@ -23,6 +23,16 @@
         ];
       };
 
+      laptop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./configuration.nix
+          home-manager.nixosModules.home-manager
+          ./users/personal.nix
+          ./hosts/thinkpadz13.nix
+        ];
+      };
+
       testvm = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
