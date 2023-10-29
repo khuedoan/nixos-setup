@@ -119,6 +119,7 @@
     dbus.enable = true;
     blueman.enable = true;
     tailscale.enable = true;
+    gvfs.enable = true;
   };
 
   security = {
