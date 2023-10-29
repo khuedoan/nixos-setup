@@ -5,13 +5,17 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-23.05";
     };
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager }: {
+  outputs = { self, nixpkgs, nixos-hardware, home-manager }: {
     nixosConfigurations = {
       main = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -27,6 +31,7 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
+          nixos-hardware.nixosModules.lenovo-thinkpad-z13
           home-manager.nixosModules.home-manager
           ./users/personal.nix
           ./hosts/thinkpadz13.nix
