@@ -12,21 +12,20 @@
           set -eu
 
           [ -d ~/.git ] \
-            || sleep 10 \
-            && ${pkgs.git}/bin/git init \
+            || ${pkgs.git}/bin/git init \
             && ${pkgs.git}/bin/git config status.showUntrackedFiles no \
             && ${pkgs.git}/bin/git remote add origin https://github.com/khuedoan/dotfiles \
             && ${pkgs.git}/bin/git pull origin master \
             && ${pkgs.git}/bin/git branch --set-upstream-to=origin/master master
 
           [ -d ~/Pictures/Wallpapers ] \
-            || curl \
+            || ${pkgs.curl}/bin/curl \
               https://user-images.githubusercontent.com/27996771/129466074-64c92948-96b0-4673-be33-75ee26b82a6c.jpg \
               --output ~/Pictures/Wallpapers/LostInMindNord.jpg \
               --create-dirs
 
           [ -d ~/.ssh ] \
-            || ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N ""
+            || ${pkgs.openssh}/bin/ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N ""
         '';
       };
       services = {
@@ -146,9 +145,6 @@
             "ctrl+Shift+Space" = "exec ibus-next";
           };
           output = {
-            "DP-3" = {
-              mode = "2560x1440@180hz";
-            };
             "*" = {
               bg = "~/Pictures/Wallpapers/LostInMindNord.jpg fill";
             };

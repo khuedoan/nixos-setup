@@ -17,9 +17,9 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
-          ./hosts/ryzentower.nix
           home-manager.nixosModules.home-manager
           ./users/personal.nix
+          ./hosts/ryzentower.nix
         ];
       };
 
