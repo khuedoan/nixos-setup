@@ -78,6 +78,7 @@
         pcmanfm
         rofi-wayland
         slurp
+        sway-contrib.inactive-windows-transparency
         swayidle
         swaylock
         wl-clipboard
