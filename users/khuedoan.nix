@@ -1,6 +1,50 @@
 { pkgs, ... }:
 
 {
+  users.users.khuedoan = {
+    isNormalUser = true;
+    description = "Khue Doan";
+    extraGroups = [
+      "docker"
+      "networkmanager"
+      "video"
+      "wheel"
+    ];
+    shell = pkgs.zsh;
+    packages = with pkgs; [
+      aria
+      audacity
+      cargo
+      chromium
+      fd
+      firefox-wayland
+      foot
+      fzf
+      gh
+      go
+      jq
+      k9s
+      kubectl
+      kubernetes-helm
+      kustomize
+      nnn
+      nodePackages.npm
+      nodePackages.yarn
+      nodejs
+      obs-studio
+      ripgrep
+      zoxide
+
+      # Language servers, override the one installed by mason.nvim
+      lua-language-server
+      rust-analyzer
+
+      (pass.withExtensions (ext: with ext; [
+        pass-otp
+      ]))
+    ];
+  };
+
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;

@@ -137,49 +137,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.khuedoan = {
-    isNormalUser = true;
-    description = "Khue Doan";
-    extraGroups = [
-      "docker"
-      "networkmanager"
-      "video"
-      "wheel"
-    ];
-    shell = pkgs.zsh;
-    packages = with pkgs; [
-      aria
-      audacity
-      cargo
-      chromium
-      fd
-      firefox-wayland
-      foot
-      fzf
-      gh
-      go
-      jq
-      k9s
-      kubectl
-      kubernetes-helm
-      kustomize
-      nnn
-      nodePackages.npm
-      nodePackages.yarn
-      nodejs
-      obs-studio
-      ripgrep
-      zoxide
-
-      # Language servers, override the one installed by mason.nvim
-      lua-language-server
-      rust-analyzer
-
-      (pass.withExtensions (ext: with ext; [
-        pass-otp
-      ]))
-    ];
-  };
 }

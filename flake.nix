@@ -22,7 +22,7 @@
         modules = [
           ./configuration.nix
           home-manager.nixosModules.home-manager
-          ./users/personal.nix
+          ./users/khuedoan.nix
           ./hosts/ryzentower.nix
         ];
       };
@@ -33,7 +33,7 @@
           ./configuration.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-z13
           home-manager.nixosModules.home-manager
-          ./users/personal.nix
+          ./users/khuedoan.nix
           ./hosts/thinkpadz13.nix
         ];
       };
@@ -42,9 +42,9 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
-          ./hosts/testvm.nix
           home-manager.nixosModules.home-manager
-          ./users/personal.nix
+          ./users/khuedoan.nix
+          ./hosts/testvm.nix
         ];
       };
     };
