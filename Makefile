@@ -1,5 +1,5 @@
 .POSIX:
-.PHONY: default build test update
+.PHONY: default build test diff update
 
 config ?= main
 
@@ -18,6 +18,15 @@ test:
 		--flake '.#testvm' \
 		build-vm
 	./result/bin/run-nixos-vm
+
+diff:
+	nixos-rebuild \
+		--impure \
+		--flake '.#${config}' \
+		build
+	nix store diff-closures \
+		--allow-symlinked-store \
+		/nix/var/nix/profiles/system ./result
 
 update:
 	nix flake update
