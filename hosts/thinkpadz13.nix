@@ -1,6 +1,11 @@
 { pkgs, ... }:
 
 {
+  # TODO remove after NixOS 23.11
+  boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_5;
+  };
+
   hardware = {
     opengl = {
       driSupport = true;
