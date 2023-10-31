@@ -215,7 +215,7 @@
           enable = true;
           bars = {
             default = {
-              theme = "native";
+              theme = "plain";
               icons = "material-nf";
               blocks = [
                 {
@@ -234,10 +234,10 @@
                   block = "backlight";
                 }
                 {
-                  block = "battery";
+                  block = "time";
                 }
                 {
-                  block = "time";
+                  block = "battery";
                 }
               ];
             };
