@@ -5,6 +5,10 @@
     (modulesPath + "/virtualisation/qemu-vm.nix")
   ];
 
+  networking = {
+    hostName = "testvm";
+  };
+
   virtualisation = {
     qemu.options = [
       "-device virtio-vga-gl"

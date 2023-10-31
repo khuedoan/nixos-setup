@@ -17,7 +17,7 @@
 
   outputs = { self, nixpkgs, nixos-hardware, home-manager }: {
     nixosConfigurations = {
-      main = nixpkgs.lib.nixosSystem {
+      ryzentower = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
@@ -27,7 +27,7 @@
         ];
       };
 
-      laptop = nixpkgs.lib.nixosSystem {
+      thinkpadz13 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./configuration.nix

@@ -1,15 +1,13 @@
 .POSIX:
 .PHONY: default build test diff update
 
-config ?= main
-
 default: build
 
 build:
 	# TODO find a way to generate hardware configuration and avoid impure
 	sudo nixos-rebuild \
 		--impure \
-		--flake '.#${config}' \
+		--flake '.#${host}' \
 		switch
 
 test:
@@ -22,7 +20,7 @@ test:
 diff:
 	nixos-rebuild \
 		--impure \
-		--flake '.#${config}' \
+		--flake '.#${host}' \
 		build
 	nix store diff-closures \
 		--allow-symlinked-store \
