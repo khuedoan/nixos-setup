@@ -113,8 +113,6 @@
           };
           gaps = {
             smartBorders = "on";
-            smartGaps = true;
-            inner = 10;
           };
           input = {
             "type:pointer" = {
