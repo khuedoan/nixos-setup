@@ -199,7 +199,6 @@
           };
           startup = [
             { command = "autotiling"; always = true; }
-            { command = "inactive-windows-transparency.py"; always = true; }
             { command = "systemctl --user start easyeffects"; }
             { command = "ibus-daemon -drx"; }
           ];
