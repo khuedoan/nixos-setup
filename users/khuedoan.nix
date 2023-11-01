@@ -15,8 +15,8 @@
       aria
       audacity
       cargo
-      chromium
       fd
+      ffmpeg
       firefox-wayland
       foot
       fzf
@@ -33,6 +33,7 @@
       nodejs
       obs-studio
       ripgrep
+      ungoogled-chromium
       zoxide
 
       # Language servers, override the one installed by mason.nvim
