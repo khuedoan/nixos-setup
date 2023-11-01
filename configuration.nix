@@ -118,7 +118,9 @@
     };
     dbus.enable = true;
     blueman.enable = true;
-    tailscale.enable = true;
+    # TODO only enable Tailscale when needed for now due to battery drain
+    # https://github.com/tailscale/tailscale/issues/4891
+    tailscale.enable = false;
     gvfs.enable = true;
   };
 
@@ -126,8 +128,11 @@
     polkit.enable = true;
   };
 
-  virtualisation.docker = {
-    enable = true;
+  virtualisation = {
+    podman = {
+      enable = true;
+      dockerCompat = true;
+    };
   };
 
   # This value determines the NixOS release from which the default

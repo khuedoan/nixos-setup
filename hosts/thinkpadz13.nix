@@ -14,6 +14,21 @@
   };
 
   services = {
+    auto-cpufreq = {
+      # TODO find a way to set epp to power, not balance_power
+      # Run these commands for now
+      # sudo systemctl stop auto-cpufreq.service
+      # echo "power" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
+      enable = true;
+      settings = {
+        battery = {
+           governor = "powersave";
+        };
+        charger = {
+           governor = "performance";
+        };
+      };
+    };
     kanata = {
       enable = true;
       keyboards = {
