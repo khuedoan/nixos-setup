@@ -119,8 +119,10 @@
               accel_profile = "flat";
             };
             "type:touchpad" = {
+              click_method = "clickfinger";
               middle_emulation = "enabled";
               natural_scroll = "enabled";
+              scroll_factor = "0.1";
               tap = "enabled";
             };
           };
