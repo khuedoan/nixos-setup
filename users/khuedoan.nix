@@ -33,7 +33,7 @@
       nodejs
       obs-studio
       ripgrep
-      ungoogled-chromium
+      chromium
       zoxide
 
       # Language servers, override the one installed by mason.nvim
