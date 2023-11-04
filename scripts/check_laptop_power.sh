@@ -7,3 +7,10 @@ cat /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference | uniq
 
 echo "===== GPU ====="
 cat /sys/class/drm/card0/device/power_dpm_force_performance_level
+cat /sys/class/drm/card0/device/power_dpm_state
+
+echo "===== Platform ====="
+cat /sys/firmware/acpi/platform_profile
+
+echo "===== Radio devices ====="
+rfkill

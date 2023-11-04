@@ -14,19 +14,20 @@
   };
 
   services = {
-    auto-cpufreq = {
-      # TODO find a way to set epp to power, not balance_power
-      # Run these commands for now
-      # sudo systemctl stop auto-cpufreq.service
-      # echo "power" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
+    tlp = {
       enable = true;
       settings = {
-        battery = {
-           governor = "powersave";
-        };
-        charger = {
-           governor = "performance";
-        };
+        CPU_DRIVER_OPMODE_ON_BAT = "active";
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+        RADEON_DPM_STATE_ON_BAT = "battery";
+        RADEON_DPM_PERF_LEVEL_ON_BAT = "low";
+
+        PLATFORM_PROFILE_ON_BAT = "low-power";
+
+        DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE = "bluetooth wifi wwan";
+        MEM_SLEEP_ON_BAT = "deep";
       };
     };
     kanata = {
