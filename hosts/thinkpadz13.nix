@@ -20,14 +20,9 @@
         CPU_DRIVER_OPMODE_ON_BAT = "active";
         CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
         CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-
-        RADEON_DPM_STATE_ON_BAT = "battery";
         RADEON_DPM_PERF_LEVEL_ON_BAT = "low";
-
         PLATFORM_PROFILE_ON_BAT = "low-power";
-
         DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE = "bluetooth wifi wwan";
-        MEM_SLEEP_ON_BAT = "deep";
       };
     };
     kanata = {
