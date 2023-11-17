@@ -122,6 +122,17 @@
     # https://github.com/tailscale/tailscale/issues/4891
     tailscale.enable = false;
     gvfs.enable = true;
+    yggdrasil = {
+      enable = true;
+      persistentKeys = true; # /var/lib/yggdrasil/keys.json
+      settings = {
+        Peers = [
+          # https://publicpeers.neilalexander.dev
+          "tcp://sin.yuetau.net:6642"
+          "tcp://mima.localghost.org:1996"
+        ];
+      };
+    };
   };
 
   security = {
