@@ -128,7 +128,8 @@
           };
           keybindings = {
             "${modifier}+Space" = "exec rofi -show drun -show-icons";
-            "${modifier}+Return" = "exec ${terminal}";
+            "${modifier}+Return" = "exec cd $(swaycwd) && ${terminal}";
+            "${modifier}+Shift+Return" = "exec ${terminal}";
             "${modifier}+Shift+q" = "kill";
             "${modifier}+d" = "exec ${menu}";
 
