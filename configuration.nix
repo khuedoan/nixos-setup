@@ -68,6 +68,9 @@
     };
     sway = {
       enable = true;
+      wrapperFeatures = {
+        gtk = true;
+      };
       extraPackages = with pkgs; [
         autotiling
         feh
