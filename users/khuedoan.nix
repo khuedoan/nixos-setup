@@ -75,16 +75,6 @@
       };
       services = {
         easyeffects.enable = true;
-        swayidle = {
-          enable = true;
-          events = [
-            { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -f"; }
-          ];
-          timeouts = [
-            { timeout = 600; command = "${pkgs.swaylock}/bin/swaylock -f"; }
-            { timeout = 660; command = "${pkgs.sway}/bin/swaymsg \"output * power off\""; resumeCommand = "${pkgs.sway}/bin/swaymsg \"output * power on\""; }
-          ];
-        };
       };
       home.pointerCursor = {
         name = "Adwaita";
