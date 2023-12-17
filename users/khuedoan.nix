@@ -14,8 +14,8 @@
     packages = with pkgs; [
       aria
       audacity
+      brave
       cargo
-      chromium
       fd
       ffmpeg
       firefox-wayland
