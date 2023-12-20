@@ -15,7 +15,7 @@ test:
 		--impure \
 		--flake '.#testvm' \
 		build-vm
-	./result/bin/run-nixos-vm
+	./result/bin/run-testvm-vm
 
 diff:
 	nixos-rebuild \

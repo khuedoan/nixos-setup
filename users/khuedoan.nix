@@ -41,6 +41,7 @@
       rust-analyzer
 
       (pass.withExtensions (ext: with ext; [
+        pass-import
         pass-otp
       ]))
     ];
