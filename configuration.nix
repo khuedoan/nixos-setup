@@ -122,9 +122,7 @@
     };
     dbus.enable = true;
     blueman.enable = true;
-    # TODO only enable Tailscale when needed for now due to battery drain
-    # https://github.com/tailscale/tailscale/issues/4891
-    tailscale.enable = false;
+    tailscale.enable = true;
     gvfs.enable = true;
     yggdrasil = {
       enable = true;
