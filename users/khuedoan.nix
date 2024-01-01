@@ -34,6 +34,7 @@
       nodejs
       obs-studio
       ripgrep
+      telegram-desktop
       zoxide
 
       # Language servers, override the one installed by mason.nvim
