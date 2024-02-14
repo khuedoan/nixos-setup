@@ -14,6 +14,7 @@
     packages = with pkgs; [
       aria
       audacity
+      bat
       brave
       cargo
       fd
