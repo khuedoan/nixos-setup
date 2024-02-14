@@ -5,8 +5,8 @@
     isNormalUser = true;
     description = "Khue Doan";
     extraGroups = [
+      "docker"
       "networkmanager"
-      "podman"
       "video"
       "wheel"
     ];

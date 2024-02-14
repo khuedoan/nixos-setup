@@ -141,10 +141,9 @@
   };
 
   virtualisation = {
-    podman = {
+    docker = {
       enable = true;
-      dockerCompat = true;
-      dockerSocket.enable = true;
+      enableOnBoot = false;
       autoPrune.enable = true;
     };
   };
