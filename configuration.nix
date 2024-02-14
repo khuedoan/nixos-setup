@@ -14,7 +14,9 @@
   };
 
   networking = {
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+    };
   };
 
   time.timeZone = "Asia/Ho_Chi_Minh";
@@ -132,17 +134,6 @@
     blueman.enable = true;
     tailscale.enable = true;
     gvfs.enable = true;
-    yggdrasil = {
-      enable = true;
-      persistentKeys = true; # /var/lib/yggdrasil/keys.json
-      settings = {
-        Peers = [
-          # https://publicpeers.neilalexander.dev
-          "tcp://sin.yuetau.net:6642"
-          "tcp://mima.localghost.org:1996"
-        ];
-      };
-    };
   };
 
   security = {
