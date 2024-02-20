@@ -29,13 +29,11 @@
       kubectl
       kubernetes-helm
       kustomize
-      nnn
       nodePackages.npm
       nodePackages.yarn
       nodejs
       obs-studio
       ripgrep
-      telegram-desktop
       zoxide
 
       # Language servers, override the one installed by mason.nvim
