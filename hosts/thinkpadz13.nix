@@ -76,18 +76,4 @@
       steam
     ];
   };
-
-  home-manager = {
-    users.khuedoan = {
-      wayland.windowManager.sway = {
-        config = {
-          output = {
-            "eDP-1" = {
-              scale = "1.25";
-            };
-          };
-        };
-      };
-    };
-  };
 }
