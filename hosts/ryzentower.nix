@@ -14,7 +14,7 @@
 
   services = {
     kanata = {
-      enable = true;
+      enable = false;
       keyboards = {
         maxfit67 = {
           devices = [

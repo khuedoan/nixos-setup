@@ -19,6 +19,14 @@
     };
   };
 
+  systemd = {
+    services = {
+      NetworkManager-wait-online = {
+        enable = false;
+      };
+    };
+  };
+
   time.timeZone = "Asia/Ho_Chi_Minh";
 
   i18n = {
