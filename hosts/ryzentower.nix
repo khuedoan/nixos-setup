@@ -69,6 +69,14 @@
         };
       };
     };
+    openvpn = {
+      servers = {
+        dv1 = {
+          config = "config /home/khuedoan/Downloads/ovpn/dv1.ovpn";
+          updateResolvConf = true;
+        };
+      };
+    };
   };
 
   home-manager = {
