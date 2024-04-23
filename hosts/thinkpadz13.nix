@@ -1,9 +1,9 @@
 { pkgs, ... }:
 
 {
-  # TODO remove after NixOS 23.11
+  # TODO remove after the default version is >= v6.5
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_6_5;
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_6;
   };
 
   hardware = {

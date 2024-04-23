@@ -30,7 +30,7 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
-          nixos-hardware.nixosModules.lenovo-thinkpad-z13
+          nixos-hardware.nixosModules.lenovo-thinkpad-z13-gen1
           home-manager.nixosModules.home-manager
           ./users/khuedoan.nix
           ./hosts/thinkpadz13.nix
