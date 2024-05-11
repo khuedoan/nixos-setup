@@ -17,6 +17,7 @@
       audacity
       bat
       brave
+      btop
       cargo
       fd
       ffmpeg
