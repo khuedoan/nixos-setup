@@ -6,6 +6,7 @@
     description = "Khue Doan";
     extraGroups = [
       "docker"
+      "libvirtd"
       "networkmanager"
       "video"
       "wheel"

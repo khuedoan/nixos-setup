@@ -113,6 +113,9 @@
       enable = true;
       silent = true;
     };
+    virt-manager = {
+      enable = true;
+    };
   };
 
   fonts.packages = with pkgs; [
@@ -153,6 +156,9 @@
       enable = true;
       enableOnBoot = false;
       autoPrune.enable = true;
+    };
+    libvirtd = {
+      enable = true;
     };
   };
 
