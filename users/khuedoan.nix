@@ -14,7 +14,6 @@
     shell = pkgs.zsh;
     packages = with pkgs; [
       aria
-      audacity
       bat
       brave
       btop
@@ -25,6 +24,7 @@
       foot
       fzf
       gh
+      gnome.gnome-sound-recorder
       go
       jq
       k9s
