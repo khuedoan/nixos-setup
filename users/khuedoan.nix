@@ -41,6 +41,7 @@
       # Language servers, override the one installed by mason.nvim
       lua-language-server
       rust-analyzer
+      terraform-ls
 
       (pass.withExtensions (ext: with ext; [
         pass-import
