@@ -1,11 +1,6 @@
 { pkgs, ... }:
 
 {
-  # TODO remove after the default version is >= v6.5
-  boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_6_6;
-  };
-
   hardware = {
     opengl = {
       driSupport = true;
