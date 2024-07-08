@@ -71,13 +71,6 @@
     };
   };
 
-  users.users.khuedoan = {
-    packages = with pkgs; [
-      bottles
-      steam
-    ];
-  };
-
   home-manager = {
     users.khuedoan = {
       wayland.windowManager.sway = {

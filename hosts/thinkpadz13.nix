@@ -65,10 +65,4 @@
   networking = {
     hostName = "thinkpadz13";
   };
-
-  users.users.khuedoan = {
-    packages = with pkgs; [
-      steam
-    ];
-  };
 }
