@@ -38,8 +38,10 @@
       ripgrep
       zoxide
 
-      # Language servers, override the one installed by mason.nvim
+      # Language servers
+      gopls
       lua-language-server
+      nodePackages.typescript-language-server
       rust-analyzer
       terraform-ls
 
