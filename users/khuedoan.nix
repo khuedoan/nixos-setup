@@ -42,6 +42,7 @@
       gopls
       lua-language-server
       nodePackages.typescript-language-server
+      pyright
       rust-analyzer
       terraform-ls
 
