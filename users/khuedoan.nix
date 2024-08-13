@@ -72,8 +72,9 @@
 
           [ -d ~/Pictures/Wallpapers ] \
             || ${pkgs.curl}/bin/curl \
-              https://user-images.githubusercontent.com/27996771/129466074-64c92948-96b0-4673-be33-75ee26b82a6c.jpg \
-              --output ~/Pictures/Wallpapers/LostInMindNord.jpg \
+              --location \
+              https://github.com/user-attachments/assets/b63195d0-7fe3-4ab5-95c7-20127123836c \
+              --output ~/Pictures/Wallpapers/astronaut-jellyfish.jpg \
               --create-dirs
 
           [ -d ~/.ssh ] \
