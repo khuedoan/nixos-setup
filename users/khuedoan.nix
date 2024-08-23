@@ -36,6 +36,7 @@
       nodejs
       obs-studio
       ripgrep
+      steam
       zoxide
 
       # Language servers
