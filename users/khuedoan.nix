@@ -37,6 +37,7 @@
       obs-studio
       ripgrep
       steam
+      yt-dlp
       zoxide
 
       # Language servers
