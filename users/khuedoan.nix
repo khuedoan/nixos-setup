@@ -36,6 +36,7 @@
       nodejs
       obs-studio
       ripgrep
+      steam
       yt-dlp
       zoxide
 
