@@ -71,6 +71,14 @@
     };
   };
 
+  nixpkgs.config.allowUnfree = true;
+
+  users.users.khuedoan = {
+    packages = with pkgs; [
+      steam
+    ];
+  };
+
   home-manager = {
     users.khuedoan = {
       wayland.windowManager.sway = {
