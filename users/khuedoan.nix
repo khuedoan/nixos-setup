@@ -18,6 +18,7 @@
       brave
       btop
       cargo
+      difftastic
       fd
       ffmpeg
       firefox-wayland
