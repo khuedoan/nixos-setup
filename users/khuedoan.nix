@@ -36,6 +36,7 @@
       nodePackages.yarn
       nodejs
       obs-studio
+      onlyoffice-bin
       ripgrep
       yt-dlp
       zoxide
