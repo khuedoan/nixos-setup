@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  disko.devices.disk.main.device = "/dev/sda";
+
   hardware = {
     graphics = {
       enable32Bit = true;

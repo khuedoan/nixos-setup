@@ -5,6 +5,10 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-24.11";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
     };
@@ -14,11 +18,12 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager }: {
+  outputs = { self, nixpkgs, disko, nixos-hardware, home-manager }: {
     nixosConfigurations = {
       ryzentower = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          disko.nixosModules.disko
           ./configuration.nix
           home-manager.nixosModules.home-manager
           ./users/khuedoan.nix

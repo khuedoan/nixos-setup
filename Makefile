@@ -4,22 +4,18 @@
 default: build
 
 build:
-	# TODO find a way to generate hardware configuration and avoid impure
 	sudo nixos-rebuild \
-		--impure \
 		--flake '.#${host}' \
 		switch
 
 test:
 	nixos-rebuild \
-		--impure \
 		--flake '.#testvm' \
 		build-vm
 	./result/bin/run-testvm-vm
 
 diff:
 	nixos-rebuild \
-		--impure \
 		--flake '.#${host}' \
 		build
 	nix store diff-closures \
@@ -28,3 +24,14 @@ diff:
 
 update:
 	nix flake update
+
+install:
+	# This consumes significant memory on the live USB because dependencies are
+	# downloaded to tmpfs. The configuration must be small, or the machine must
+	# have a lot of RAM.
+	sudo nix \
+		--extra-experimental-features 'nix-command flakes' \
+		run 'github:nix-community/disko/latest#disko-install' -- \
+		--write-efi-boot-entries \
+		--flake '.#${host}' \
+		--disk main '${device}'
