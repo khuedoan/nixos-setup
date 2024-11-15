@@ -136,7 +136,12 @@
   };
 
   services = {
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      settings = {
+        PasswordAuthentication = false;
+      };
+    };
     pipewire = {
       enable = true;
       alsa.enable = true;
