@@ -176,7 +176,13 @@
     docker = {
       enable = true;
       enableOnBoot = false;
-      autoPrune.enable = true;
+      autoPrune = {
+        enable = true;
+        flags = [
+          "--all"
+          "--volumes"
+        ];
+      };
     };
     libvirtd = {
       enable = true;
