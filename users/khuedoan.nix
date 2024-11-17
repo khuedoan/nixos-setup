@@ -41,6 +41,7 @@
       obs-studio
       onlyoffice-bin
       ripgrep
+      wezterm
       yt-dlp
       zoxide
 
