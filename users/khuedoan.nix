@@ -28,7 +28,7 @@
       foot
       fzf
       gh
-      gnome.gnome-sound-recorder
+      gnome-sound-recorder
       go
       jq
       k9s
