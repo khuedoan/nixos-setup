@@ -21,7 +21,7 @@
       brave
       btop
       cargo
-      difftastic
+      delta
       fd
       ffmpeg
       firefox-wayland
