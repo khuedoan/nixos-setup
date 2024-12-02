@@ -35,10 +35,41 @@
   i18n = {
     defaultLocale = "en_US.UTF-8";
     inputMethod = {
-      type = "ibus";
-      ibus.engines = with pkgs.ibus-engines; [
-        bamboo
-      ];
+      enable = true;
+      type = "fcitx5";
+      fcitx5 = {
+        waylandFrontend = true;
+        addons = with pkgs; [
+          fcitx5-bamboo
+        ];
+        settings = {
+          inputMethod = {
+            "Groups/0" = {
+              "Name" = "Default";
+              "Default Layout" = "us";
+              "DefaultIM" = "keyboard-us";
+            };
+            "Groups/0/Items/0" = {
+              "Name" = "keyboard-us";
+            };
+            "Groups/0/Items/1" = {
+              "Name" = "bamboo";
+            };
+          };
+          globalOptions = {
+            "Hotkey/EnumerateForwardKeys" = {
+              "0" = "Control+Shift+space";
+            };
+          };
+          addons = {
+            bamboo = {
+              globalSection = {
+                InputMethod = "Telex 2";
+              };
+            };
+          };
+        };
+      };
     };
   };
 
@@ -58,19 +89,21 @@
   };
 
   # List packages installed in system profile.
-  environment.systemPackages = with pkgs; [
-    curl
-    file
-    gcc
-    git
-    gnumake
-    neovim
-    python3
-    tmux
-    tree
-    unzip
-    watch
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      curl
+      file
+      gcc
+      git
+      gnumake
+      neovim
+      python3
+      tmux
+      tree
+      unzip
+      watch
+    ];
+  };
 
   programs = {
     zsh = {
