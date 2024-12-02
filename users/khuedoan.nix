@@ -74,6 +74,7 @@
             || ${pkgs.git}/bin/git init \
             && ${pkgs.git}/bin/git config status.showUntrackedFiles no \
             && ${pkgs.git}/bin/git remote add origin https://github.com/khuedoan/dotfiles \
+            && (until ${pkgs.iputils}/bin/ping -c 1 github.com; do sleep 1; done) \
             && ${pkgs.git}/bin/git pull origin master \
             && ${pkgs.git}/bin/git branch --set-upstream-to=origin/master master
 
