@@ -57,6 +57,9 @@
             };
           };
           globalOptions = {
+            "Behavior" = {
+              "ShowInputMethodInformation" = "False";
+            };
             "Hotkey/EnumerateForwardKeys" = {
               "0" = "Control+Shift+space";
             };
