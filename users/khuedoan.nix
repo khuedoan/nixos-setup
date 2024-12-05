@@ -96,6 +96,17 @@
         name = "Adwaita";
         package = pkgs.adwaita-icon-theme;
       };
+      gtk = {
+        enable = true;
+        theme = {
+          package = pkgs.arc-theme;
+          name = "Arc-Dark";
+        };
+        iconTheme = {
+          package = pkgs.arc-icon-theme;
+          name = "Arc";
+        };
+      };
     };
   };
 }
