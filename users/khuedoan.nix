@@ -24,7 +24,6 @@
       delta
       fd
       ffmpeg
-      firefox-wayland
       foot
       fzf
       gh
@@ -41,7 +40,6 @@
       obs-studio
       onlyoffice-bin
       ripgrep
-      wezterm
       yt-dlp
       zoxide
 
