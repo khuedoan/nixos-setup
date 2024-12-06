@@ -1,5 +1,5 @@
 .POSIX:
-.PHONY: default build test diff update
+.PHONY: default build test diff update install
 
 default: build
 
@@ -36,4 +36,4 @@ install:
 		run 'github:nix-community/disko/latest#disko-install' -- \
 		--write-efi-boot-entries \
 		--flake '.#${host}' \
-		--disk main '${device}'
+		--disk main '${disk}'
