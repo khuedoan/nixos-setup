@@ -22,7 +22,7 @@
           ./configuration.nix
           home-manager.nixosModules.home-manager
           ./users/khuedoan.nix
-          ./hosts/ryzentower.nix
+          ./hosts/ryzentower
         ];
       };
 
@@ -33,7 +33,7 @@
           nixos-hardware.nixosModules.lenovo-thinkpad-z13-gen1
           home-manager.nixosModules.home-manager
           ./users/khuedoan.nix
-          ./hosts/thinkpadz13.nix
+          ./hosts/thinkpadz13
         ];
       };
 
@@ -43,7 +43,7 @@
           ./configuration.nix
           home-manager.nixosModules.home-manager
           ./users/khuedoan.nix
-          ./hosts/testvm.nix
+          ./hosts/testvm
         ];
       };
     };
