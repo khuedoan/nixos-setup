@@ -21,7 +21,6 @@
   outputs = { self, nixpkgs, disko, nixos-hardware, home-manager }: {
     nixosConfigurations = {
       ryzentower = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         modules = [
           disko.nixosModules.disko
           ./configuration.nix
@@ -32,7 +31,6 @@
       };
 
       thinkpadz13 = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         modules = [
           ./configuration.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-z13-gen1
@@ -43,8 +41,8 @@
       };
 
       testvm = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         modules = [
+          disko.nixosModules.disko
           ./configuration.nix
           home-manager.nixosModules.home-manager
           ./users/khuedoan.nix

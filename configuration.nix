@@ -219,7 +219,7 @@
     gvfs.enable = true;
     yggdrasil = {
       enable = true;
-      persistentKeys = true;
+      persistentKeys = true; # /var/lib/yggdrasil/keys.json
       settings = {
         Peers = [
           # https://publicpeers.neilalexander.dev
