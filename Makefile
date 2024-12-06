@@ -26,6 +26,8 @@ update:
 	nix flake update
 
 install:
+	nixos-generate-config --no-filesystems --show-hardware-config > 'hosts/${host}/hardware-configuration.nix'
+	git add . && git diff --staged
 	# This consumes significant memory on the live USB because dependencies are
 	# downloaded to tmpfs. The configuration must be small, or the machine must
 	# have a lot of RAM.

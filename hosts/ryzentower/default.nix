@@ -1,7 +1,9 @@
 { pkgs, ... }:
 
 {
-  disko.devices.disk.main.device = "/dev/sda";
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   hardware = {
     graphics = {
