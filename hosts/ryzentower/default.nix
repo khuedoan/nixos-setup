@@ -76,13 +76,13 @@
 
   home-manager = {
     users.khuedoan = {
-      wayland.windowManager.sway = {
-        config = {
-          output = {
-            "DP-3" = {
-              mode = "2560x1440@180hz";
-            };
-          };
+      home = {
+        file = {
+          ".config/sway/config.d/hardware".text = ''
+            output "DP-3" {
+              mode 2560x1440@180Hz
+            }
+          '';
         };
       };
     };

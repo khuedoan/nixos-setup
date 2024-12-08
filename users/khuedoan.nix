@@ -62,30 +62,32 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     users.khuedoan = {
-      home.stateVersion = "23.05";
-      home.activation = {
-        # TODO optimize this?
-        dotfiles = ''
-          set -eu
+      home = {
+        stateVersion = "23.05";
+        activation = {
+          # TODO optimize this?
+          dotfiles = ''
+            set -eu
 
-          [ -d ~/.git ] \
-            || ${pkgs.git}/bin/git init \
-            && ${pkgs.git}/bin/git config status.showUntrackedFiles no \
-            && ${pkgs.git}/bin/git remote add origin https://github.com/khuedoan/dotfiles \
-            && (until ${pkgs.iputils}/bin/ping -c 1 github.com; do sleep 1; done) \
-            && ${pkgs.git}/bin/git pull origin master \
-            && ${pkgs.git}/bin/git branch --set-upstream-to=origin/master master
+            [ -d ~/.git ] \
+              || ${pkgs.git}/bin/git init \
+              && ${pkgs.git}/bin/git config status.showUntrackedFiles no \
+              && ${pkgs.git}/bin/git remote add origin https://github.com/khuedoan/dotfiles \
+              && (until ${pkgs.iputils}/bin/ping -c 1 github.com; do sleep 1; done) \
+              && ${pkgs.git}/bin/git pull origin master \
+              && ${pkgs.git}/bin/git branch --set-upstream-to=origin/master master
 
-          [ -d ~/Pictures/Wallpapers ] \
-            || ${pkgs.curl}/bin/curl \
-              --location \
-              https://github.com/user-attachments/assets/b63195d0-7fe3-4ab5-95c7-20127123836c \
-              --output ~/Pictures/Wallpapers/astronaut-jellyfish.jpg \
-              --create-dirs
+            [ -d ~/Pictures/Wallpapers ] \
+              || ${pkgs.curl}/bin/curl \
+                --location \
+                https://github.com/user-attachments/assets/b63195d0-7fe3-4ab5-95c7-20127123836c \
+                --output ~/Pictures/Wallpapers/astronaut-jellyfish.jpg \
+                --create-dirs
 
-          [ -d ~/.ssh ] \
-            || ${pkgs.openssh}/bin/ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N ""
-        '';
+            [ -d ~/.ssh ] \
+              || ${pkgs.openssh}/bin/ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N ""
+          '';
+        };
       };
       services = {
         easyeffects.enable = true;
