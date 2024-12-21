@@ -11,6 +11,10 @@
     };
   };
 
+  networking = {
+    hostName = "thinkpadz13";
+  };
+
   services = {
     tlp = {
       enable = true;
@@ -65,7 +69,17 @@
     };
   };
 
-  networking = {
-    hostName = "thinkpadz13";
+  home-manager = {
+    users.khuedoan = {
+      home = {
+        file = {
+          ".config/sway/config.d/hardware".text = ''
+            output "eDP-1" {
+              scale 1.2
+            }
+          '';
+        };
+      };
+    };
   };
 }
