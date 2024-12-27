@@ -46,6 +46,7 @@
       # Language servers
       gopls
       lua-language-server
+      nil
       nodePackages.typescript-language-server
       pyright
       rust-analyzer
