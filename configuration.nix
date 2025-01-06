@@ -142,6 +142,11 @@
   programs = {
     zsh = {
       enable = true;
+      loginShellInit = ''
+        if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
+          exec sway
+        fi
+      '';
     };
     gnupg.agent = {
       enable = true;
@@ -198,14 +203,6 @@
   };
 
   services = {
-    greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --asterisks --cmd sway";
-        };
-      };
-    };
     openssh = {
       enable = true;
       settings = {
