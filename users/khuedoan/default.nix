@@ -18,7 +18,6 @@
     packages = with pkgs; [
       aria
       bat
-      brave
       btop
       cargo
       delta
@@ -27,7 +26,6 @@
       foot
       fzf
       gh
-      gnome-sound-recorder
       go
       jq
       k9s
@@ -37,11 +35,14 @@
       nodePackages.npm
       nodePackages.yarn
       nodejs
-      obs-studio
-      onlyoffice-bin
       ripgrep
       yt-dlp
       zoxide
+
+      (pass-nodmenu.withExtensions (ext: with ext; [
+        pass-import
+        pass-otp
+      ]))
 
       # Language servers
       gopls
@@ -52,10 +53,13 @@
       rust-analyzer
       terraform-ls
 
-      (pass.withExtensions (ext: with ext; [
-        pass-import
-        pass-otp
-      ]))
+      # GUI
+      blender
+      brave
+      gnome-sound-recorder
+      neovide
+      obs-studio
+      onlyoffice-bin
     ];
   };
 
