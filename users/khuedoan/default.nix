@@ -70,10 +70,8 @@
       home = {
         stateVersion = "23.05";
         activation = {
-          # TODO optimize this?
           dotfiles = ''
             set -eu
-
             [ -d ~/.git ] \
               || ${pkgs.git}/bin/git init \
               && ${pkgs.git}/bin/git config status.showUntrackedFiles no \
@@ -81,17 +79,13 @@
               && (until ${pkgs.iputils}/bin/ping -c 1 github.com; do sleep 1; done) \
               && ${pkgs.git}/bin/git pull origin master \
               && ${pkgs.git}/bin/git branch --set-upstream-to=origin/master master
-
-            [ -d ~/Pictures/Wallpapers ] \
-              || ${pkgs.curl}/bin/curl \
-                --location \
-                https://github.com/user-attachments/assets/b63195d0-7fe3-4ab5-95c7-20127123836c \
-                --output ~/Pictures/Wallpapers/astronaut-jellyfish.jpg \
-                --create-dirs
-
-            [ -d ~/.ssh ] \
-              || ${pkgs.openssh}/bin/ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N ""
           '';
+        };
+        file = {
+          "Pictures/Wallpapers/astronaut-jellyfish.jpg".source = builtins.fetchurl {
+            url = "https://github.com/user-attachments/assets/b63195d0-7fe3-4ab5-95c7-20127123836c";
+            sha256 = "1g120j4z6665j4wh2g84m4rb24gvzdxyhx9lqym68cwn8ny2j7fz"; # nix-prefetch-url
+          };
         };
       };
       services = {
