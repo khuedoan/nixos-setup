@@ -10,9 +10,9 @@ build:
 
 test:
 	nixos-rebuild \
-		--flake '.#testvm' \
+		--flake '.#${host}' \
 		build-vm
-	./result/bin/run-testvm-vm
+	./result/bin/run-${host}-vm
 
 diff:
 	nixos-rebuild \

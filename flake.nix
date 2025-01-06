@@ -29,7 +29,6 @@
           ./hosts/ryzentower
         ];
       };
-
       thinkpadz13 = nixpkgs.lib.nixosSystem {
         modules = [
           disko.nixosModules.disko
@@ -38,16 +37,6 @@
           home-manager.nixosModules.home-manager
           ./users/khuedoan
           ./hosts/thinkpadz13
-        ];
-      };
-
-      testvm = nixpkgs.lib.nixosSystem {
-        modules = [
-          disko.nixosModules.disko
-          ./configuration.nix
-          home-manager.nixosModules.home-manager
-          ./users/khuedoan
-          ./hosts/testvm
         ];
       };
     };
