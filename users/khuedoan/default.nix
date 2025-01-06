@@ -57,8 +57,8 @@
       blender
       brave
       gnome-sound-recorder
+      gpu-screen-recorder
       neovide
-      obs-studio
       onlyoffice-bin
     ];
   };

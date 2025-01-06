@@ -136,6 +136,7 @@
       gcc
       git
       gnumake
+      killall
       neovim
       python3
       tmux
@@ -168,6 +169,7 @@
         feh
         grim
         i3status-rust
+        libnotify
         mako
         mpv
         pavucontrol
@@ -190,6 +192,7 @@
     virt-manager = {
       enable = true;
     };
+    gpu-screen-recorder.enable = true;
   };
 
   fonts.packages = with pkgs; [
