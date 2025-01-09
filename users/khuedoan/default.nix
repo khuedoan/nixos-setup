@@ -60,6 +60,7 @@
       gpu-screen-recorder
       neovide
       onlyoffice-bin
+      sweethome3d.application
     ];
   };
 
