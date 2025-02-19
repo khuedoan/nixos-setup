@@ -176,6 +176,7 @@
         pcmanfm
         rofi-wayland
         slurp
+        soteria
         swayidle
         swaylock
         wl-clipboard
