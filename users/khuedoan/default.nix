@@ -35,6 +35,7 @@
       nodePackages.npm
       nodePackages.yarn
       nodejs
+      radicle-node
       ripgrep
       yt-dlp
       zoxide
