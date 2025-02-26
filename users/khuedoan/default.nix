@@ -20,7 +20,6 @@
       bat
       btop
       cargo
-      delta
       fd
       ffmpeg
       foot
