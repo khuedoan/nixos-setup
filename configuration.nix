@@ -124,7 +124,8 @@
 
   nixpkgs = {
     config = {
-      rocmSupport = true;
+      # TODO fix this on ARM
+      # rocmSupport = true;
     };
   };
 
@@ -193,7 +194,8 @@
     virt-manager = {
       enable = true;
     };
-    gpu-screen-recorder.enable = true;
+    # TODO fix this on ARM
+    # gpu-screen-recorder.enable = true;
   };
 
   fonts.packages = with pkgs; [

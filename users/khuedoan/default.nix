@@ -54,13 +54,13 @@
       terraform-ls
 
       # GUI
-      blender
-      brave
-      gnome-sound-recorder
-      gpu-screen-recorder
-      neovide
-      onlyoffice-bin
-      sweethome3d.application
+      # TODO fix this
+      # blender
+      # brave
+      # gnome-sound-recorder
+      # neovide
+      # onlyoffice-bin
+      # sweethome3d.application
     ];
   };
 
