@@ -56,6 +56,8 @@
       # GUI
       blender
       brave
+      emacs-pgtk
+      firefox-wayland
       gnome-sound-recorder
       gpu-screen-recorder
       neovide
