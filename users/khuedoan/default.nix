@@ -62,6 +62,7 @@
       gpu-screen-recorder
       neovide
       onlyoffice-bin
+      signal-desktop
       sweethome3d.application
     ];
   };
