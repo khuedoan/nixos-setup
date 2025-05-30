@@ -31,9 +31,7 @@ install:
 	# This consumes significant memory on the live USB because dependencies are
 	# downloaded to tmpfs. The configuration must be small, or the machine must
 	# have a lot of RAM.
-	sudo nix \
-		--extra-experimental-features 'nix-command flakes' \
-		run 'github:nix-community/disko/latest#disko-install' -- \
+	sudo disko-install \
 		--write-efi-boot-entries \
 		--flake '.#${host}' \
 		--disk main '${disk}'

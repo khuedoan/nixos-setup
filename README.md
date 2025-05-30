@@ -31,7 +31,7 @@ sudo dd bs=4M if=/path/to/nixos.iso of=/dev/sda conv=fsync oflag=direct status=p
 4. Install NixOS from the live CD:
 
 ```sh
-nix-shell -p git gnumake neovim
+nix-shell -p git gnumake neovim disko
 git clone https://github.com/khuedoan/nixos-setup
 cd nixos-setup
 # Remember to replace the placeholders
