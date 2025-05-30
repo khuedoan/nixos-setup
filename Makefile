@@ -37,3 +37,6 @@ install:
 		--write-efi-boot-entries \
 		--flake '.#${host}' \
 		--disk main '${disk}'
+
+clean:
+	nix-collect-garbage --delete-old --log-format bar

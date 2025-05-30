@@ -39,6 +39,15 @@
           ./hosts/thinkpadz13
         ];
       };
+      codeserver = nixpkgs.lib.nixosSystem {
+        modules = [
+          disko.nixosModules.disko
+          ./configuration.nix
+          home-manager.nixosModules.home-manager
+          ./users/khuedoan
+          ./hosts/codeserver
+        ];
+      };
     };
   };
 }
