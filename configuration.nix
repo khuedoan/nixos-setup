@@ -81,12 +81,6 @@
     };
   };
 
-  nixpkgs = {
-    config = {
-      rocmSupport = true;
-    };
-  };
-
   # List packages installed in system profile.
   environment = {
     systemPackages = with pkgs; [

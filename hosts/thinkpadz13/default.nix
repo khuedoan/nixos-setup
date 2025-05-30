@@ -11,6 +11,12 @@
     };
   };
 
+  nixpkgs = {
+    config = {
+      rocmSupport = true;
+    };
+  };
+
   networking = {
     hostName = "thinkpadz13";
   };
