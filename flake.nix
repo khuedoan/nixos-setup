@@ -24,6 +24,7 @@
         modules = [
           disko.nixosModules.disko
           ./configuration.nix
+          ./graphical.nix
           home-manager.nixosModules.home-manager
           ./users/khuedoan
           ./hosts/ryzentower
@@ -34,6 +35,7 @@
           disko.nixosModules.disko
           ./configuration.nix
           nixos-hardware.nixosModules.lenovo-thinkpad-z13-gen1
+          ./graphical.nix
           home-manager.nixosModules.home-manager
           ./users/khuedoan
           ./hosts/thinkpadz13
