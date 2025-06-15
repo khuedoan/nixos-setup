@@ -26,6 +26,7 @@
       fzf
       gh
       go
+      gurk-rs
       jq
       k9s
       kubectl
@@ -62,7 +63,6 @@
       gpu-screen-recorder
       neovide
       onlyoffice-bin
-      signal-desktop
       sweethome3d.application
     ];
   };
