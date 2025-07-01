@@ -24,6 +24,7 @@
       ffmpeg
       foot
       fzf
+      gemini-cli
       gh
       go
       gurk-rs
