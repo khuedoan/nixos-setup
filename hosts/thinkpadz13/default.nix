@@ -82,6 +82,9 @@
             output "eDP-1" {
               scale 1.2
             }
+
+            bindswitch --reload --locked lid:on output eDP-1 disable
+            bindswitch --reload --locked lid:off output eDP-1 enable
           '';
         };
       };
