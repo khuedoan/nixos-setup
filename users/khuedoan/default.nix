@@ -62,6 +62,7 @@
       firefox-wayland
       gnome-sound-recorder
       gpu-screen-recorder
+      kdePackages.kdeconnect-kde
       neovide
       onlyoffice-bin
       sweethome3d.application
