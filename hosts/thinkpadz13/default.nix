@@ -80,7 +80,7 @@
         file = {
           ".config/sway/config.d/hardware".text = ''
             output "eDP-1" {
-              scale 1.2
+              scale 1.25
             }
 
             bindswitch --reload --locked lid:on output eDP-1 disable
