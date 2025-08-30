@@ -27,7 +27,6 @@
       gemini-cli
       gh
       go
-      gurk-rs
       jq
       k9s
       kubectl
@@ -65,6 +64,7 @@
       kdePackages.kdeconnect-kde
       neovide
       onlyoffice-bin
+      signal-desktop
       sweethome3d.application
     ];
   };
