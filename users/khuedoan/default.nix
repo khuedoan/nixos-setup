@@ -8,6 +8,7 @@
       "docker"
       "libvirtd"
       "networkmanager"
+      "tss"
       "video"
       "wheel"
     ];
