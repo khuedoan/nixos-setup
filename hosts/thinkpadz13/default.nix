@@ -39,6 +39,8 @@
         CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
         RADEON_DPM_PERF_LEVEL_ON_BAT = "low";
         PLATFORM_PROFILE_ON_BAT = "low-power";
+        START_CHARGE_THRESH_BAT0 = 30;
+        STOP_CHARGE_THRESH_BAT0 = 80;
       };
     };
     kanata = {
