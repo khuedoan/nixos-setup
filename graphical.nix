@@ -61,7 +61,7 @@
         mpv
         pavucontrol
         pcmanfm
-        rofi-wayland
+        rofi
         slurp
         soteria
         swayidle

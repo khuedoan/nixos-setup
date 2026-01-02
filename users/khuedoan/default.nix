@@ -17,7 +17,7 @@
     ];
     shell = pkgs.zsh;
     packages = with pkgs; [
-      aria
+      aria2
       bat
       btop
       cargo
@@ -59,12 +59,12 @@
       blender
       brave
       emacs-pgtk
-      firefox-wayland
+      firefox
       gnome-sound-recorder
       gpu-screen-recorder
       kdePackages.kdeconnect-kde
       neovide
-      onlyoffice-bin
+      onlyoffice-desktopeditors
       signal-desktop
       sweethome3d.application
     ];
