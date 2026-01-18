@@ -1,9 +1,13 @@
-{ pkgs, ... }:
+{ lib, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
   ];
+
+  networking = {
+    hostName = "ryzentower";
+  };
 
   hardware = {
     graphics = {
@@ -14,11 +18,17 @@
   nixpkgs = {
     config = {
       rocmSupport = true;
+      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "steam"
+        "steam-unwrapped"
+      ];
     };
   };
 
-  networking = {
-    hostName = "ryzentower";
+  programs = {
+    steam = {
+      enable = true;
+    };
   };
 
   services = {
