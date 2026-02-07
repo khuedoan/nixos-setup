@@ -103,6 +103,31 @@
       services = {
         easyeffects.enable = true;
       };
+      systemd.user = {
+        services.sync-notes = {
+          Unit = {
+            Description = "Sync notes";
+          };
+          Service = {
+            Type = "oneshot";
+            WorkingDirectory = "%h/Documents/notes";
+            Environment = "PATH=/run/current-system/sw/bin:/usr/bin:/bin";
+            ExecStart = "make sync";
+          };
+        };
+        timers.sync-notes = {
+          Unit = {
+            Description = "Sync notes every 5 minutes";
+          };
+          Timer = {
+            OnUnitActiveSec = "5min";
+            Persistent = true;
+          };
+          Install = {
+            WantedBy = [ "timers.target" ];
+          };
+        };
+      };
       home.pointerCursor = {
         name = "Adwaita";
         package = pkgs.adwaita-icon-theme;
