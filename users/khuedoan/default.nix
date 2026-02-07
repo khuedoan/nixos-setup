@@ -49,11 +49,16 @@
       # Language servers
       gopls
       lua-language-server
+      markdown-oxide
       nil
       nodePackages.typescript-language-server
       pyright
       rust-analyzer
       terraform-ls
+
+      # AI
+      unstable.codex
+      unstable.opencode
 
       # GUI
       blender
