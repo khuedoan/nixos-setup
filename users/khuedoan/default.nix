@@ -111,8 +111,27 @@
           Service = {
             Type = "oneshot";
             WorkingDirectory = "%h/Documents/notes";
-            Environment = "PATH=/run/current-system/sw/bin:/usr/bin:/bin";
-            ExecStart = "make sync";
+            Environment = [
+              "HOSTNAME=%H"
+              "GIT_SSH_COMMAND=/run/current-system/sw/bin/ssh"
+            ];
+            ExecStart = "${pkgs.writeTextFile {
+              name = "sync-notes";
+              executable = true;
+              text = ''
+                #!${pkgs.bash}/bin/sh
+                set -eu
+
+                if [ -n "$(${pkgs.git}/bin/git status --porcelain)" ]; then
+                  ${pkgs.git}/bin/git add --all
+                  if ! ${pkgs.git}/bin/git diff --cached --quiet; then
+                    ${pkgs.git}/bin/git commit -m "Update notes from $HOSTNAME"
+                  fi
+                fi
+                ${pkgs.git}/bin/git pull --rebase --strategy-option theirs
+                ${pkgs.git}/bin/git push
+              '';
+            }}";
           };
         };
         timers.sync-notes = {
