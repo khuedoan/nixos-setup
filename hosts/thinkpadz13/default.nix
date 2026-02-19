@@ -1,10 +1,6 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
-
   hardware = {
     graphics = {
       enable32Bit = true;
@@ -21,6 +17,7 @@
   };
 
   nixpkgs = {
+    hostPlatform = "x86_64-linux";
     config = {
       rocmSupport = true;
     };

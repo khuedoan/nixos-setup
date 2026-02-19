@@ -1,9 +1,9 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
+  nixpkgs = {
+    hostPlatform = "x86_64-linux";
+  };
 
   networking = {
     hostName = "codeserver";

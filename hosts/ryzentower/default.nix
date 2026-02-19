@@ -1,10 +1,6 @@
 { lib, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
-
   networking = {
     hostName = "ryzentower";
   };
@@ -16,6 +12,7 @@
   };
 
   nixpkgs = {
+    hostPlatform = "x86_64-linux";
     config = {
       rocmSupport = true;
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [

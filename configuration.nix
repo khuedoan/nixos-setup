@@ -45,6 +45,7 @@
   };
 
   hardware = {
+    enableAllHardware = true;
     bluetooth.enable = true;
   };
 
