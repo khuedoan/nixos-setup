@@ -39,6 +39,7 @@
       radicle-node
       ripgrep
       yt-dlp
+      zk
       zoxide
 
       (pass-nodmenu.withExtensions (ext: with ext; [
