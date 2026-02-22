@@ -135,6 +135,7 @@
     blueman.enable = true;
     tailscale.enable = true;
     gvfs.enable = true;
+    ratbagd.enable = true;
     yggdrasil = {
       enable = true;
       persistentKeys = true; # /var/lib/yggdrasil/keys.json

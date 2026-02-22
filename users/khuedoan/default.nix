@@ -60,6 +60,7 @@
       # AI
       unstable.codex
       unstable.opencode
+      unstable.playwright-mcp
 
       # GUI
       blender
@@ -71,6 +72,7 @@
       kdePackages.kdeconnect-kde
       neovide
       onlyoffice-desktopeditors
+      piper
       signal-desktop
       sweethome3d.application
     ];
