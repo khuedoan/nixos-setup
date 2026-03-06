@@ -6,6 +6,7 @@ default: build
 build:
 	sudo nixos-rebuild \
 		--flake '.#${host}' \
+		${flags} \
 		switch
 
 test:

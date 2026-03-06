@@ -15,13 +15,16 @@
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
     };
+    nixos-apple-silicon = {
+      url = "github:nix-community/nixos-apple-silicon";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, disko, nixos-hardware, home-manager }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, disko, nixos-hardware, nixos-apple-silicon, home-manager }:
   let
     baseModules = [
       disko.nixosModules.disko
@@ -57,6 +60,14 @@
       codeserver = nixpkgs.lib.nixosSystem {
         modules = baseModules ++ [
           ./hosts/codeserver
+        ];
+      };
+      macbookpro = nixpkgs.lib.nixosSystem {
+        modules = baseModules ++ [
+          nixos-apple-silicon.nixosModules.apple-silicon-support
+          { nixpkgs.overlays = [ nixos-apple-silicon.overlays.apple-silicon-overlay ]; }
+          ./graphical.nix
+          ./hosts/macbookpro
         ];
       };
     };
