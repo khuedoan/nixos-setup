@@ -16,7 +16,8 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN5ue4np7cF34f6dwqH1262fPjkowHQ8irfjVC156PCG"
     ];
     shell = pkgs.zsh;
-    packages = with pkgs; [
+    # Use newer packages from the unstable channel for user-level programs (system packages still use the stable channel).
+    packages = with pkgs.unstable; [
       aria2
       bat
       btop
@@ -33,8 +34,7 @@
       kubectl
       kubernetes-helm
       kustomize
-      nodePackages.npm
-      nodePackages.yarn
+      neovim
       nodejs
       radicle-node
       ripgrep
@@ -52,15 +52,15 @@
       lua-language-server
       markdown-oxide
       nil
-      nodePackages.typescript-language-server
       pyright
       rust-analyzer
       terraform-ls
+      typescript-language-server
 
       # AI
-      unstable.codex
-      unstable.opencode
-      unstable.playwright-mcp
+      codex
+      opencode
+      playwright-mcp
 
       # GUI
       blender

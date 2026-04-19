@@ -96,7 +96,6 @@
       git
       gnumake
       killall
-      unstable.neovim # TODO use stable nvim when 0.12 is available
       python3
       tmux
       tree
