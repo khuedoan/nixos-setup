@@ -66,15 +66,12 @@
       blender
       brave
       emacs-pgtk
-      firefox
       gnome-sound-recorder
       gpu-screen-recorder
       kdePackages.kdeconnect-kde
-      neovide
       onlyoffice-desktopeditors
       piper
       signal-desktop
-      sweethome3d.application
     ];
   };
 
