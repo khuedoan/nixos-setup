@@ -1,6 +1,15 @@
-{ lib, ... }:
+{ config, lib, ... }:
 
 {
+  imports = [
+    ../modules/cli
+    ../modules/dotfiles
+    ../modules/gui
+    ../modules/personal
+  ];
+
+  primaryUser.username = "khuedoan";
+
   networking = {
     hostName = "ryzentower";
   };
@@ -87,17 +96,9 @@
     };
   };
 
-  home-manager = {
-    users.khuedoan = {
-      home = {
-        file = {
-          ".config/sway/config.d/hardware".text = ''
-            output "DP-3" {
-              mode 2560x1440@180Hz
-            }
-          '';
-        };
-      };
-    };
-  };
+  home-manager.users.${config.primaryUser.username}.home.file.".config/sway/config.d/hardware".text = ''
+    output "DP-3" {
+      mode 2560x1440@180Hz
+    }
+  '';
 }

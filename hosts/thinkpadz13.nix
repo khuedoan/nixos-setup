@@ -1,6 +1,15 @@
-{ pkgs, ... }:
+{ config, ... }:
 
 {
+  imports = [
+    ../modules/cli
+    ../modules/dotfiles
+    ../modules/gui
+    ../modules/personal
+  ];
+
+  primaryUser.username = "khuedoan";
+
   hardware = {
     graphics = {
       enable32Bit = true;
@@ -82,20 +91,12 @@
     };
   };
 
-  home-manager = {
-    users.khuedoan = {
-      home = {
-        file = {
-          ".config/sway/config.d/hardware".text = ''
-            output "eDP-1" {
-              scale 1.333
-            }
+  home-manager.users.${config.primaryUser.username}.home.file.".config/sway/config.d/hardware".text = ''
+    output "eDP-1" {
+      scale 1.333
+    }
 
-            bindswitch --reload --locked lid:on output eDP-1 disable
-            bindswitch --reload --locked lid:off output eDP-1 enable
-          '';
-        };
-      };
-    };
-  };
+    bindswitch --reload --locked lid:on output eDP-1 disable
+    bindswitch --reload --locked lid:off output eDP-1 enable
+  '';
 }

@@ -1,26 +1,18 @@
 .POSIX:
-.PHONY: default build test diff update install
+.PHONY: default build switch diff update install clean
 
-default: build
+default: diff switch
 
 build:
-	sudo nixos-rebuild \
-		--flake '.#${host}' \
-		switch
+	./scripts/rebuild.py build --flake '.#$(host)'
 
-test:
-	nixos-rebuild \
-		--flake '.#${host}' \
-		build-vm
-	./result/bin/run-${host}-vm
-
-diff:
-	nixos-rebuild \
-		--flake '.#${host}' \
-		build
+diff: build
 	nix store diff-closures \
 		--allow-symlinked-store \
 		/nix/var/nix/profiles/system ./result
+
+switch:
+	sudo ./scripts/rebuild.py switch --flake '.#$(host)'
 
 update:
 	nix flake update
@@ -31,8 +23,8 @@ install:
 	# have a lot of RAM.
 	sudo disko-install \
 		--write-efi-boot-entries \
-		--flake '.#${host}' \
-		--disk main '${disk}'
+		--flake '.#$(host)' \
+		--disk main '$(disk)'
 
 clean:
 	nix-collect-garbage --delete-old --log-format bar

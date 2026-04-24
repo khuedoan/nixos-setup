@@ -1,61 +1,116 @@
-# NixOS Setup
+# Nix Setup
 
-Automatically install and configure NixOS.
+Monorepo for my Nix-based machine setup across NixOS and macOS (for when I
+don't have a Linux machine).
 
-## Usage
+## Overview
 
-### Customize the configuration
+Repository layout:
 
-Review all files and adjust the configurations to suit your needs. At a
-minimum, you’ll need to change the following:
+- `flake.nix`: entrypoint
+- `hosts/`: one per machine, each host sets hostname, username, and imports the
+  modules it needs.
+- `base/`: shared baseline
+- `modules/` composable modules that hosts can mix and match:
+  - `cli`: shared command-line tools and development packages
+  - `gui`: graphical apps and desktop settings for non-headless machines
+  - `dotfiles`: bootstraps my dotfiles repository separately from the base
+    system (moved out of base in case you don't want it)
+  - `personal`: personal-machine configuration
+  - `work`: work-specific packages and configuration
+- Modules follow this pattern:
+  - `default.nix`: entrypoint (Nix convention)
+  - `darwin.nix`: Darwin override
+  - `linux.nix`: Linux override
 
-- Users:
-    - Replace `khuedoan` with your username.
-    - Replace my SSH public keys with yours.
-    - Replace `khuedoan/dotfiles` with your dotfiles repository, or use `home-manager` to manage all dotfiles.
-  
-- Hosts:
-    - Replace my hostnames with yours.
-    - Adjust hardware configurations to match your system.
+## Customize the configuration
 
-### Install with the NixOS Live CD
+Fork this repo, then:
 
-1. Download the latest NixOS live CD from [here](https://nixos.org/download).
-2. Create a bootable USB drive:
+- Add a new host to `hosts/${HOSTNAME}.nix` (or update an existing
+one) to match your machine and it to `flake.nix`
+- Customize the host's composable modules
+- Set your username and hostname
+- Replace the SSH public keys and dotfiles repository URLs (if you don't want to use my dotfiles)
+- Replace any host-specific hardware settings
+- Follow installation and usage instruction below
+- Customize the rest of the repo for your needs and clean up things that you
+  don't use
 
-```sh
-sudo dd bs=4M if=/path/to/nixos.iso of=/dev/sda conv=fsync oflag=direct status=progress
-```
+## Installation
 
-3. Boot from the USB drive.
-4. Install NixOS from the live CD:
+Review the base, hosts, and modules directories and adjust the configuration to
+match your machines before installing.
+
+### NixOS
+
+Boot into the NixOS live ISO, then install the tools needed for the initial
+bootstrap:
 
 ```sh
 nix-shell -p git gnumake neovim disko
-git clone https://github.com/khuedoan/nixos-setup
-cd nixos-setup
-# Remember to replace the placeholders
+```
+
+Clone the repository and run the installer:
+
+```sh
+git clone https://github.com/khuedoan/nix-setup
+cd nix-setup
 make install host=HOSTNAME disk=/dev/DISK
 ```
 
-### Apply changes
+Replace `HOSTNAME` with the host module you want to install and `/dev/DISK` with
+the target disk device.
 
-After installation, clone your repository again and apply changes to the
-configuration by running:
+### macOS
+
+Before the first run:
+
+- Update the hostname and `primaryUser.username` values in `hosts/`
+- Go to `Settings > Privacy & Security > Full Disk Access` and allow Terminal
+
+Clone the repository and apply the configuration:
 
 ```sh
-make
+git clone https://github.com/khuedoan/nix-setup
+cd nix-setup
+make switch host=HOSTNAME
 ```
 
-### Update hardware configuration
+Replace `HOSTNAME` with the matching entry in `flake.nix`. The rebuild script
+installs Nix and Homebrew automatically on a fresh macOS system if they are not
+already present.
 
-If hardware changes occur, update the hardware configuration using the command
-in the `install` target in `./Makefile`.
+Then reboot.
 
-## Testing
+## Usage
 
-To test updated configurations without applying them to a running machine, create a VM using:
+Diff the new configuration against the current system profile:
 
 ```sh
-make test
+make diff
+```
+
+Apply changes on an installed machine:
+
+```sh
+make switch
+```
+
+Update packages:
+
+```sh
+make update
+```
+
+Build a specific host without switching:
+
+```sh
+make build host=HOSTNAME
+```
+
+Clean up Nix store:
+
+```sh
+make clean
 ```

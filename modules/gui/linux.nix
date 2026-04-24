@@ -1,6 +1,12 @@
 { config, pkgs, ... }:
 
 {
+  programs.zsh.loginShellInit = ''
+    if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
+      exec sway
+    fi
+  '';
+
   i18n = {
     inputMethod = {
       enable = true;
@@ -54,6 +60,7 @@
       extraPackages = with pkgs; [
         autotiling
         feh
+        foot
         grim
         i3status-rust
         libnotify
@@ -79,10 +86,6 @@
     gpu-screen-recorder.enable = true;
   };
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.fira-code
-  ];
-
   xdg.portal = {
     enable = true;
     wlr.enable = true;
@@ -102,6 +105,40 @@
   virtualisation = {
     libvirtd = {
       enable = true;
+    };
+  };
+
+  home-manager.users.${config.primaryUser.username} = {
+    home = {
+      packages = with pkgs.unstable; [
+        blender
+        brave
+        emacs-pgtk
+        gnome-sound-recorder
+        gpu-screen-recorder
+        kdePackages.kdeconnect-kde
+        onlyoffice-desktopeditors
+        piper
+      ];
+
+      pointerCursor = {
+        name = "Adwaita";
+        package = pkgs.adwaita-icon-theme;
+      };
+    };
+
+    services.easyeffects.enable = true;
+
+    gtk = {
+      enable = true;
+      theme = {
+        package = pkgs.arc-theme;
+        name = "Arc-Dark";
+      };
+      iconTheme = {
+        package = pkgs.arc-icon-theme;
+        name = "Arc";
+      };
     };
   };
 }

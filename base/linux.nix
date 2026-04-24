@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 
+let
+  username = config.primaryUser.username;
+in
+
 {
   disko.devices = {
     disk = {
@@ -73,53 +77,10 @@
   };
 
   nix = {
-    settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-    };
-    optimise.automatic = true;
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 30d";
-    };
-  };
-
-  # List packages installed in system profile.
-  environment = {
-    systemPackages = with pkgs; [
-      curl
-      file
-      gcc
-      git
-      gnumake
-      killall
-      python3
-      tmux
-      tree
-      unzip
-      watch
-    ];
-  };
-
-  programs = {
-    zsh = {
-      enable = true;
-      loginShellInit = ''
-        if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
-          exec sway
-        fi
-      '';
-    };
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-    };
-    direnv = {
-      enable = true;
-      silent = true;
     };
   };
 
@@ -164,11 +125,30 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
 
+  users.users.${username} = {
+    isNormalUser = true;
+    description = config.primaryUser.fullName;
+    extraGroups = [
+      "docker"
+      "libvirtd"
+      "networkmanager"
+      "tss"
+      "video"
+      "wheel"
+    ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN5ue4np7cF34f6dwqH1262fPjkowHQ8irfjVC156PCG"
+    ];
+    shell = pkgs.zsh;
+  };
+
+  home-manager.users.${username}.home.stateVersion = "23.05";
+
   virtualisation.vmVariant = {
     virtualisation.qemu.options = [
       "-device virtio-vga-gl"
       "-display gtk,gl=on"
     ];
-    users.users.khuedoan.password = "testvm";
+    users.users.${username}.password = "testvm";
   };
 }
