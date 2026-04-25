@@ -1,4 +1,4 @@
-name: Build
+name: Test
 
 on:
   pull_request:
@@ -49,4 +49,9 @@ jobs:
       - name: Apply test config
         # TODO permission issue in GHA if using make build
         run: |
+          sudo mv /etc/bashrc{,.before-nix-darwin}
+          sudo mv /etc/zshrc{,.before-nix-darwin}
+          sudo mv /etc/nix/nix.conf{,.before-nix-darwin}
+          sudo mv /etc/nix/nix.custom.conf{,.before-nix-darwin}
+
           sudo ./scripts/rebuild.py switch --flake "path:${GITHUB_WORKSPACE}#macos-test"

@@ -50,6 +50,7 @@ def main() -> None:
             ensure_nix()
             command = [
                 "/nix/var/nix/profiles/default/bin/nix",
+                "--experimental-features", "nix-command flakes",
                 "run",
                 "nix-darwin/nix-darwin-25.11#darwin-rebuild",
                 "--",
