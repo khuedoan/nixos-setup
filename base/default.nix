@@ -10,13 +10,6 @@
       type = lib.types.str;
       description = "Local account username for this host.";
     };
-
-    fullName = lib.mkOption {
-      type = lib.types.str;
-      default = "Khue Doan";
-      description = "Display name for the primary user.";
-    };
-
   };
 
   config = {

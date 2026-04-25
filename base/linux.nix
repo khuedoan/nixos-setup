@@ -127,7 +127,6 @@ in
 
   users.users.${username} = {
     isNormalUser = true;
-    description = config.primaryUser.fullName;
     extraGroups = [
       "docker"
       "libvirtd"
