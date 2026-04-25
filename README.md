@@ -114,3 +114,26 @@ Clean up Nix store:
 ```sh
 make clean
 ```
+
+## Testing
+
+GitHub Actions builds all NixOS and Darwin hosts, then applies the test hosts.
+
+You can also test this locally in VMs:
+
+NixOS:
+
+1. `make test` <!-- TODO add test VM back -->
+
+macOS:
+
+1. Install [UTM](https://getutm.app)
+2. Download [macOS IPSW recovery file](https://ipsw.me/product/Mac)
+3. Create a macOS VM in UTM using the downloaded IPSW file
+4. Run `xcode-select --install` in the new VM
+5. (Optional) Clone the VM to a new one for easy rollback ([UTM doesn't support snapshot yet](https://github.com/utmapp/UTM/issues/2688)) <!-- TODO -->
+6. Follow [the above steps](#macOS)
+
+## Acknowledgements
+
+- [Setup nix, nix-darwin and home-manager from scratch on an M1 Macbook Pro](https://gist.github.com/jmatsushita/5c50ef14b4b96cb24ae5268dab613050)
