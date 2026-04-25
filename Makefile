@@ -7,8 +7,8 @@ build:
 	./scripts/rebuild.py build --flake '.#$(host)'
 
 diff: build
-	nix store diff-closures \
-		--allow-symlinked-store \
+	nix run nixpkgs#dix -- \
+		--verbose \
 		/nix/var/nix/profiles/system ./result
 
 switch:
