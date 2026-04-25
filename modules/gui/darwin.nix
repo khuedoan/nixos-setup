@@ -3,8 +3,6 @@
 {
   homebrew.casks = [
     "brave-browser"
-    "handy"
-    "helium-browser"
     "kitty"
     "linearmouse"
     "obsidian"
