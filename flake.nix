@@ -32,74 +32,62 @@
         ];
       }
     ];
+
+    mkHost = {
+      host,
+      system,
+      extraModules ? [],
+    }:
+      let
+        platform = nixpkgs.lib.systems.elaborate system;
+        builder = if platform.isDarwin then darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
+        systemModules = if platform.isDarwin then [
+          home-manager.darwinModules.home-manager
+        ] else [
+          disko.nixosModules.disko
+          home-manager.nixosModules.home-manager
+        ];
+      in
+      builder {
+        inherit system;
+        specialArgs = {
+          inherit platform;
+        };
+        modules = baseModules ++ systemModules ++ extraModules ++ [
+          ./hosts/${host}.nix
+        ];
+      };
   in {
     nixosConfigurations = {
-      ryzentower = nixpkgs.lib.nixosSystem {
+      ryzentower = mkHost {
+        host = "ryzentower";
         system = "x86_64-linux";
-        specialArgs = {
-          platform = nixpkgs.lib.systems.elaborate "x86_64-linux";
-        };
-        modules = baseModules ++ [
-          disko.nixosModules.disko
-          home-manager.nixosModules.home-manager
-          ./hosts/ryzentower.nix
-        ];
       };
-      thinkpadz13 = nixpkgs.lib.nixosSystem {
+      thinkpadz13 = mkHost {
+        host = "thinkpadz13";
         system = "x86_64-linux";
-        specialArgs = {
-          platform = nixpkgs.lib.systems.elaborate "x86_64-linux";
-        };
-        modules = baseModules ++ [
-          disko.nixosModules.disko
-          home-manager.nixosModules.home-manager
+        extraModules = [
           nixos-hardware.nixosModules.lenovo-thinkpad-z13-gen1
-          ./hosts/thinkpadz13.nix
         ];
       };
-      codeserver = nixpkgs.lib.nixosSystem {
+      codeserver = mkHost {
+        host = "codeserver";
         system = "x86_64-linux";
-        specialArgs = {
-          platform = nixpkgs.lib.systems.elaborate "x86_64-linux";
-        };
-        modules = baseModules ++ [
-          disko.nixosModules.disko
-          home-manager.nixosModules.home-manager
-          ./hosts/codeserver.nix
-        ];
       };
     };
 
     darwinConfigurations = {
-      "MacBookPro" = darwin.lib.darwinSystem {
+      "MacBookPro" = mkHost {
+        host = "MacBookPro";
         system = "aarch64-darwin";
-        specialArgs = {
-          platform = nixpkgs.lib.systems.elaborate "aarch64-darwin";
-        };
-        modules = baseModules ++ [
-          home-manager.darwinModules.home-manager
-          ./hosts/MacBookPro.nix
-        ];
       };
-      "AS-GXL19NXYYQ" = darwin.lib.darwinSystem {
+      "AS-GXL19NXYYQ" = mkHost {
+        host = "AS-GXL19NXYYQ";
         system = "aarch64-darwin";
-        specialArgs = {
-          platform = nixpkgs.lib.systems.elaborate "aarch64-darwin";
-        };
-        modules = baseModules ++ [
-          home-manager.darwinModules.home-manager
-          ./hosts/AS-GXL19NXYYQ.nix
-        ];
       };
-      macos-test = darwin.lib.darwinSystem {
+      macos-test = mkHost {
+        host = "macos-test";
         system = "aarch64-darwin";
-        specialArgs = {
-          platform = nixpkgs.lib.systems.elaborate "aarch64-darwin";
-        };
-        modules = baseModules ++ [
-          home-manager.darwinModules.home-manager
-          ./hosts/macos-test.nix
-        ];
       };
     };
   };
